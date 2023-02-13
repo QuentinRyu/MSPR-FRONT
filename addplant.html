@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant B</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      .nav-link.dropdown-toggle {
+          margin-right: 120px !important;
+      }
+     
+      </style>
+</head>
+<body style="background-image: url('https://img.freepik.com/vetores-gratis/projeto-de-papel-de-parede-mural-tropical_23-2148679938.jpg?w=1380&t=st=1675521484~exp=1675522084~hmac=9db5d065515d0527aaf6b6576387934f99526ff9d25e69b5261e2585dc362a0e');">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-bottom: 20px;">
+        <div class="container-fluid" style="margin-left: 10px; margin-right: 50px;">
+            <a class="navbar-brand" href="file:///C:/MSPR%20FRONT/MSPR-FRONT/vue.html">
+                <img src="C:\MSPR FRONT\MSPR-FRONT\image\plante.png"> 
+                <span>Plant B</span>
+              </a>
+              
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="City" aria-label="Search">
+              <button class="btn btn-outline-success " type="submit">Search</button>
+            </form>
+          </div>
+          <div class="d-flex justify-content-center ml-5 mr-5">
+            <button class="btn btn-outline-success mx-2" id="keepingButton">Keeping</button>
+            <button class="btn btn-outline-success mx-2" id="beingKeptButton">Being Kept</button>
+            <button class="btn btn-outline-success mx-2" id="addPlantButton">Add Plant</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.getElementById("keepingButton").addEventListener("click", function(){
+          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/keeping.html";
+        });
+        document.getElementById("beingKeptButton").addEventListener("click", function(){
+          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/beingkept.html";
+        });
+        document.getElementById("addPlantButton").addEventListener("click", function(){
+          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/addplant.html";
+        });
+        </script>
+
+          <div class="ml-50 mr-5">
+            <ul class="navbar-nav me-auto ">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                  <img src="C:\MSPR FRONT\MSPR-FRONT\image\connection.png">
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <li><a class="dropdown-item" href="#">Register</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  <body>
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-center font-weight-bold">ADD PLANT</h5>
+          <form>
+            <div class="container mt-5">
+              <h2 class="text-center mb-5">Choose your plant</h2>
+              <div class="d-flex justify-content-center">
+                <div class="plant-image" v-for="(plant, index) in plants">
+                  <input type="checkbox" :value="plant.value" v-model="selectedPlants">
+                  <img :src="plant.img" alt="Plant" width="100" height="100" />
+                  <p class="text-center">{{ plant.name }}</p>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="inputAddress">Adresse</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputAddress"
+                  placeholder="Entrez l'adresse où se trouve la plante"
+                />
+              </div>
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="inputDuration">Durée</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputDuration"
+                  placeholder="Entrez la durée"
+                />
+              </div>
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="inputInstructions">Consignes</label>
+                <textarea
+                  class="form-control"
+                  id="inputInstructions"
+                  rows="3"
+                  placeholder="Entrez des consignes pour prendre soin de la plante"
+                ></textarea>
+              </div>
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="inputImage">Image de la plante</label>
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="inputImage"
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                @click.prevent="submitForm"
+              >
+                Ajouter
+              </button>
+              
+            
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      new Vue({
+        el: ".card-body",
+        data: {
+          plants: [
+            { name: "Plant 1", img: "C:\\MSPR FRONT\\MSPR-FRONT\\image\\usine-de-serpent.png", value: 1 },
+            { name: "Plant 2", img: "C:\\MSPR FRONT\\MSPR-FRONT\\image\\saule.png", value: 2 },
+            { name: "Plant 3", img: "C:\\MSPR FRONT\\MSPR-FRONT\\image\\anglais.png", value: 3 }
+          ],
+          selectedPlants: [],
+          address: "",
+          description: ""
+        },
+        methods: {
+          submitForm() {
+            console.log("Plants selected: ", this.selectedPlants);
+            console.log("Address: ", this.address);
+            console.log("Description: ", this.description);
+            
+          }
+        }
+        
+      });
+      
+    </script>
+  </body>
+  
