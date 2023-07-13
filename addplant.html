@@ -24,55 +24,54 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-bottom: 20px;">
-        <div class="container-fluid" style="margin-left: 10px; margin-right: 50px;">
-          <a class="navbar-brand" href="file:///C:/MSPR%20FRONT/MSPR-FRONT/vue.html">
-            <img src="C:\MSPR FRONT\MSPR-FRONT\image\plante.png"> 
-            <span>Plant B</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="City" aria-label="Search">
-              <button class="btn btn-outline-success " type="submit">Search</button>
-            </form>
-          </div>
-          <div class="d-flex justify-content-center ml-5 mr-5">
-            <button class="btn btn-outline-success mx-2" id="keepingButton">Keeping</button>
-            <button class="btn btn-outline-success mx-2" id="beingKeptButton">Being Kept</button>
-            <button class="btn btn-outline-success mx-2" id="addPlantButton">Add Plant</button>
-          </div>
-        </div>
-      </div>
-      <script>
-        document.getElementById("keepingButton").addEventListener("click", function(){
-          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/keeping.html";
-        });
-        document.getElementById("beingKeptButton").addEventListener("click", function(){
-          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/beingkept.html";
-        });
-        document.getElementById("addPlantButton").addEventListener("click", function(){
-          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/addplant.html";
-        });
-        </script>
-
-          <div class="ml-50 mr-5">
-            <ul class="navbar-nav me-auto ">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  <img src="C:\MSPR FRONT\MSPR-FRONT\image\connection.png">
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Login</a></li>
-                  <li><a class="dropdown-item" href="#">Register</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-bottom: 20px;">
+  <div class="container-fluid" style="margin-left: 10px; margin-right: 50px;">
+    <a class="navbar-brand" href="vue.html">
+      <img src="image\plante.png">
+      <span>Plant B</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="City" aria-label="Search">
+        <button class="btn btn-outline-success " type="submit">Search</button>
+      </form>
+    </div>
+    <div class="d-flex justify-content-center ml-5 mr-5">
+      <button class="btn btn-outline-success mx-2" id="keepingButton">Keeping</button>
+      <button class="btn btn-outline-success mx-2" id="beingKeptButton">Being Kept</button>
+      <button class="btn btn-outline-success mx-2" id="addPlantButton">Add Plant</button>
+    </div>
+  </div>
+  </div>
+  <script>
+    document.getElementById("keepingButton").addEventListener("click", function(){
+      window.location.href = "keeping.html?id_user=1";
+    });
+    document.getElementById("beingKeptButton").addEventListener("click", function(){
+      window.location.href = "beingkept.html?id_user=1";
+    });
+    document.getElementById("addPlantButton").addEventListener("click", function(){
+      window.location.href = "addplant.html";
+    });
+  </script>
+  <div class="ml-50 mr-5">
+    <ul class="navbar-nav me-auto ">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+          <img src="image/connection.png">
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Login</a></li>
+          <li><a class="dropdown-item" href="#">Register</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
   <body>
     <div class="container mt-5">
       <div class="card">
@@ -214,9 +213,9 @@
         el: ".card-body",
         data: {
           plants: [
-            { name: "Plant 1", img: "C:\\MSPR FRONT\\MSPR-FRONT\\image\\usine-de-serpent.png", value: 1 },
-            { name: "Plant 2", img: "C:\\MSPR FRONT\\MSPR-FRONT\\image\\saule.png", value: 2 },
-            { name: "Plant 3", img: "C:\\MSPR FRONT\\MSPR-FRONT\\image\\anglais.png", value: 3 }
+            { name: "Plant 1", img: "image/usine-de-serpent.png", value: 1 },
+            { name: "Plant 2", img: "image/saule.png", value: 2 },
+            { name: "Plant 3", img: "image/anglais.png", value: 3 }
           ],
           selectedPlants: [],
           address: "",

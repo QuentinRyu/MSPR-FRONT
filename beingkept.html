@@ -25,69 +25,68 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-bottom: 20px;">
-        <div class="container-fluid" style="margin-left: 10px; margin-right: 50px;">
-          <a class="navbar-brand" href="file:///C:/MSPR%20FRONT/MSPR-FRONT/vue.html">
-            <img src="C:\MSPR FRONT\MSPR-FRONT\image\plante.png"> 
+    <div class="container-fluid" style="margin-left: 10px; margin-right: 50px;">
+        <a class="navbar-brand" href="vue.html">
+            <img src="image\plante.png">
             <span>Plant B</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="City" aria-label="Search">
-              <button class="btn btn-outline-success " type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="City" aria-label="Search">
+                <button class="btn btn-outline-success " type="submit">Search</button>
             </form>
-          </div>
-          <div class="d-flex justify-content-center ml-5 mr-5">
+        </div>
+        <div class="d-flex justify-content-center ml-5 mr-5">
             <button class="btn btn-outline-success mx-2" id="keepingButton">Keeping</button>
             <button class="btn btn-outline-success mx-2" id="beingKeptButton">Being Kept</button>
             <button class="btn btn-outline-success mx-2" id="addPlantButton">Add Plant</button>
-          </div>
         </div>
-      </div>
-      <script>
+    </div>
+    </div>
+    <script>
         document.getElementById("keepingButton").addEventListener("click", function(){
-          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/keeping.html";
+            window.location.href = "keeping.html?id_user=1";
         });
         document.getElementById("beingKeptButton").addEventListener("click", function(){
-          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/beingkept.html";
+            window.location.href = "beingkept.html?id_user=1";
         });
         document.getElementById("addPlantButton").addEventListener("click", function(){
-          window.location.href = "file:///C:/MSPR%20FRONT/MSPR-FRONT/addplant.html";
+            window.location.href = "addplant.html";
         });
-        </script>
-
-          <div class="ml-50 mr-5">
-            <ul class="navbar-nav me-auto ">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="C:\MSPR FRONT\MSPR-FRONT\image\connection.png">
+    </script>
+    <div class="ml-50 mr-5">
+        <ul class="navbar-nav me-auto ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <img src="image/connection.png">
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Login</a></li>
-                  <li><a class="dropdown-item" href="#">Register</a></li>
+                    <li><a class="dropdown-item" href="#">Login</a></li>
+                    <li><a class="dropdown-item" href="#">Register</a></li>
                 </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>
   
       
     <div class="container mt-5 text-center">
         <div class="card w-50" style="margin: 0 auto 0 auto;">
           <div class="card-body">
-            <h5 class="card-title text-center">Patrique Pagole</h5>
-            <p class="card-text">
+            <h5 class="card-title text-center" id="Nom_User">Patrique Pagole</h5>
+            <p class="card-text" id="Bio_User">
               BIO
             </p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">
+            <li class="list-group-item" id="Email_User">
               <strong>Email : </strong> email@exemple.com
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item" id="Tel_User">
               <strong>Téléphone : </strong> +33 6 00 00 00 00
             </li>
           </ul>
@@ -147,6 +146,41 @@
                 user : ""
             }
         })
+
+        // Récupérer les paramètres de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Vérifier si le paramètre 'id_user' est présent dans l'URL
+        if (urlParams.has('id_user')) {
+            // Récupérer la valeur de 'id_user'
+            const idUser = urlParams.get('id_user');
+
+            // Construire l'URL complète avec la valeur de 'id_user'
+            const url = `http://localhost:8080/api/users/${idUser}`;
+
+            // Effectuer la requête HTTP GET vers l'URL
+            fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Remplir les données dans le code HTML
+
+                        // Remplir le nom de l'utilisateur
+                        document.getElementById('Nom_User').textContent = data.name;
+
+                        // Remplir la biographie de l'utilisateur
+                        document.getElementById('Bio_User').textContent = data.bio;
+
+                        // Remplir l'adresse email de l'utilisateur
+                        document.getElementById('Email_User').innerHTML = `<strong>Email : </strong>${data.mailAdress}`;
+
+                        // Remplir le numéro de téléphone de l'utilisateur
+                        document.getElementById('Tel_User').innerHTML = `<strong>Téléphone : </strong>${data.tel}`;
+                    })
+                    .catch(error => {
+                        // Gérer les erreurs de la requête
+                        console.error('Erreur lors de la récupération des données :', error);
+                    });
+        }
     </script>
 </body>
 </html>
